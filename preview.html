@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VeloMalta Pro · iPhone Preview</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,system-ui,sans-serif;color:#10212b;background:#f3f7f8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#e2f9fb 0,transparent 48%),#f4f7f8}
+header{max-width:1050px;margin:auto;padding:26px 22px 12px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:800;letter-spacing:-.5px;display:flex;align-items:center;gap:10px}.mark{width:34px;height:34px;border-radius:11px;background:#26c6da;color:white;display:grid;place-items:center;font-size:20px}
+header a{color:#087b88;text-decoration:none;font-size:13px;font-weight:650}
+main{max-width:1050px;margin:auto;padding:12px 22px 40px;display:grid;grid-template-columns:1fr 390px;gap:42px;align-items:center}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.03;letter-spacing:-2px;margin:0 0 14px}.lead{color:#687a83;line-height:1.6;font-size:15px;max-width:430px}
+.switch{display:flex;gap:8px;background:#e9f0f1;padding:5px;border-radius:14px;width:max-content;margin:28px 0 18px}
+.switch button{border:0;background:transparent;padding:11px 18px;border-radius:10px;font-weight:700;color:#64747d;cursor:pointer}
+.switch button.active{background:white;color:#10212b;box-shadow:0 2px 9px #10212b12}
+.hint{font-size:12px;color:#7b8a91;line-height:1.6;max-width:390px}
+.device-wrap{display:flex;justify-content:center}
+.iphone{width:390px;height:820px;max-height:calc(100svh - 35px);aspect-ratio:390/820;background:#101316;border:7px solid #171a1d;border-radius:53px;padding:7px;position:relative;box-shadow:0 28px 75px #152c3433,0 4px 12px #152c3422;overflow:hidden}
+.screen{height:100%;width:100%;background:#fff;border-radius:40px;overflow:hidden;position:relative}
+.status{position:absolute;z-index:5;top:0;left:0;right:0;height:38px;padding:10px 22px 0;display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;font-weight:750;color:#101820;pointer-events:none}
+.dynamic-island{position:absolute;z-index:6;top:8px;left:50%;transform:translateX(-50%);width:104px;height:28px;border-radius:20px;background:#050607;pointer-events:none}
+.status .right{margin-left:auto;margin-right:0;background:#ffffffc9;border-radius:10px;padding:2px 5px}
+iframe{border:0;width:100%;height:100%;display:block;background:#f4f8fa}
+.home-indicator{position:absolute;z-index:7;bottom:7px;left:50%;transform:translateX(-50%);width:118px;height:4px;border-radius:5px;background:#111;opacity:.8;pointer-events:none}
+.device-label{text-align:center;color:#89969b;font-size:11px;margin-top:13px}
+@media(max-width:760px){header{padding:18px 18px 8px}main{grid-template-columns:1fr;gap:18px;padding:12px 12px 30px}.intro{text-align:center}.lead{margin:auto}.switch{margin:22px auto 14px}.hint{margin:auto}.iphone{width:min(390px,calc(100vw - 34px));height:auto;aspect-ratio:390/820;max-height:none;border-radius:48px}.screen{border-radius:37px}.device-wrap{margin-top:2px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="mark">V</span> VeloMalta Pro <span style="font-size:10px;color:#0d8998;letter-spacing:1px">PREVIEW</span></div><a href="./">All workspaces ↗</a></header>
+<main>
+<section class="intro">
+<p style="font-size:10px;letter-spacing:1.7px;font-weight:800;color:#0d8998;margin:0 0 12px">INTERACTIVE IPHONE SIMULATOR</p>
+<h1>Explore the apps<br>on iPhone.</h1>
+<p class="lead">Preview the Rider and Driver experiences inside an iPhone-style device. Switch between apps and test the available screens and interactions.</p>
+<div class="switch" role="tablist" aria-label="Choose app">
+<button class="active" id="rider-tab" type="button" role="tab" aria-selected="true">Rider App</button>
+<button id="driver-tab" type="button" role="tab" aria-selected="false">Driver App</button>
+</div>
+<p class="hint">This is an interactive UI preview, not a native iOS build. Demo data is used; live bookings, payments and dispatch are not connected.</p>
+</section>
+<section>
+<div class="device-wrap"><div class="iphone"><div class="screen"><div class="status"><span>9:41</span><span class="right">●●●　 Wi-Fi　 ▰</span></div><div class="dynamic-island"></div><iframe id="app-frame" title="VeloMalta Rider App Preview" src="./rider-app/" allow="geolocation"></iframe><div class="home-indicator"></div></div></div></div>
+<div class="device-label">iPhone preview · Portrait</div>
+</section>
+</main>
+<script>
+const frame=document.getElementById('app-frame'),rider=document.getElementById('rider-tab'),driver=document.getElementById('driver-tab');
+function selectApp(which){const isRider=which==='rider';frame.src=isRider?'./rider-app/':'./driver-app/';frame.title='VeloMalta '+(isRider?'Rider':'Driver')+' App Preview';rider.classList.toggle('active',isRider);driver.classList.toggle('active',!isRider);rider.setAttribute('aria-selected',String(isRider));driver.setAttribute('aria-selected',String(!isRider))}
+rider.addEventListener('click',()=>selectApp('rider'));driver.addEventListener('click',()=>selectApp('driver'));
+</script>
+</body>
+</html>
