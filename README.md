@@ -1,20 +1,16 @@
 # VeloMalta Pro
 
-A responsive front-end prototype for a Malta ride-hailing platform. It includes Passenger, Driver and Admin views.
+The repository is now organized into three separate front-end applications:
 
-## Run locally
-Open `index.html` in a browser, or serve the repository root with any static web server.
+- `/rider-app/` — Rider booking experience, fare estimate, vehicle categories and Malta map.
+- `/driver-app/` — Driver availability, shift/rest timer, map and illustrative earnings.
+- `/admin-dashboard/` — Demo KPIs, fleet snapshot, commission and editable pricing.
+- `/` — Portal linking to all three applications.
 
-## Deploy with Cloudflare Pages
-- Framework preset: **None**
-- Build command: leave empty
-- Build output directory: `/` (repository root)
+Shared visual styles remain in `/assets/css/style.css`.
 
-## Included
-- Passenger ride preview with Malta locations, fare estimates and map
-- Driver availability and illustrative shift/earnings dashboard
-- Admin overview with editable demo pricing and commission setting
-- Responsive desktop and mobile layouts
+## Cloudflare Pages
+Framework preset: None. Build command: empty. Output directory: `/`.
 
 ## Important
-This is a front-end demo only. It does not provide a production backend, live driver dispatch, real payments, identity verification, persistent data storage, or regulatory compliance. All dashboard data is illustrative.
+These are front-end prototypes only. There is no shared backend/database, authentication, live dispatch, payment processing, persistent admin settings or real user data. All metrics are illustrative.
